@@ -1,0 +1,33 @@
+Class SBD.Adres Extends %SerialObject
+{
+
+Property Miasto As %String;
+
+Property KodPocztowy As %String(MAXLEN = 6);
+
+Property Ulica As %String;
+
+Property Numer As %String(MAXLEN = 5);
+
+Storage Default
+{
+<Data name="AdresState">
+<Value name="1">
+<Value>Miasto</Value>
+</Value>
+<Value name="2">
+<Value>KodPocztowy</Value>
+</Value>
+<Value name="3">
+<Value>Ulica</Value>
+</Value>
+<Value name="4">
+<Value>Numer</Value>
+</Value>
+</Data>
+<State>AdresState</State>
+<StreamLocation>^SBD.AdresS</StreamLocation>
+<Type>%Library.CacheSerialState</Type>
+}
+
+}

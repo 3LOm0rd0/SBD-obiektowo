@@ -1,0 +1,172 @@
+Set organizacja1=##class(SBD.Organizacja).%New()
+Set organizacja1.Nazwa="ZAMVINEX"
+zwrite organizacja1
+Set sc = organizacja1.%Save()
+
+Set organizacja2=##class(SBD.Organizacja).%New()
+Set organizacja2.Nazwa="Appol"
+zwrite organizacja2
+Set sc = organizacja2.%Save()
+
+Set placowka1 = ##class(SBD.Placowka).%New()
+Set placowka1.Organizacja = organizacja1
+Set placowka1.Adres.Miasto="Bochnia"
+Set placowka1.Adres.Ulica="Bracka"
+Set placowka1.Adres.KodPocztowy="32-731"
+Set placowka1.Adres.Numer="3"
+zwrite placowka1
+Set sc=placowka1.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set placowka4 = ##class(SBD.Placowka).%New()
+Set placowka4.Organizacja = organizacja1
+Set placowka4.Adres.Miasto="Tczew"
+Set placowka4.Adres.Ulica="Dluga"
+Set placowka4.Adres.KodPocztowy="23-111"
+Set placowka4.Adres.Numer="34"
+zwrite placowka4
+Set sc=placowka4.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set placowka2 = ##class(SBD.Placowka).%New()
+Set placowka2.Organizacja = organizacja2
+Set placowka2.Adres.Miasto="Warszawa"
+Set placowka2.Adres.Ulica="Kartezjusza"
+Set placowka2.Adres.KodPocztowy="01-471"
+Set placowka2.Adres.Numer="89"
+zwrite placowka2
+Set sc=placowka2.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set placowka3 = ##class(SBD.Placowka).%New()
+Set placowka3.Organizacja = organizacja2
+Set placowka3.Adres.Miasto="Trzciana"
+Set placowka3.Adres.Ulica="Wielicka"
+Set placowka3.Adres.KodPocztowy="33-732"
+Set placowka3.Adres.Numer="12"
+zwrite placowka3
+Set sc=placowka3.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set kierownik1 = ##class(SBD.Kierownik).%New()
+Set kierownik1.Imie="Pawel"
+Set kierownik1.Nazwisko="Kamionka"
+Set sc=kierownik1.%Save()
+zwrite kierownik1
+zwrite kierownik1.Adres
+do kierownik1.ustalAdres(kierownik1,"Bochnia","32-781","Zytnia","12")
+Set sc=kierownik1.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set kierownik2 = ##class(SBD.Kierownik).%New()
+Set kierownik2.Imie="Dawid"
+Set kierownik2.Nazwisko="Czyæ"
+Set sc=kierownik2.%Save()
+zwrite kierownik2
+zwrite kierownik2.Adres
+do kierownik1.ustalAdres(kierownik2,"Gdow","32-751","Bosacka","22")
+Set sc=kierownik2.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set kierownik3 = ##class(SBD.Kierownik).%New()
+Set kierownik3.Imie="Marcin"
+Set kierownik3.Nazwisko="Bralski"
+Set sc=kierownik3.%Save()
+zwrite kierownik3
+zwrite kierownik3.Adres
+do kierownik3.ustalAdres(kierownik3,"Borek","12-722","Las","65")
+Set sc=kierownik3.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+
+Set kierownik4 = ##class(SBD.Kierownik).%New()
+Set kierownik4.Imie="Adrian"
+Set kierownik4.Nazwisko="Bralski"
+Set sc=kierownik4.%Save()
+zwrite kierownik4
+zwrite kierownik4.Adres
+do kierownik4.ustalAdres(kierownik4,"Borek","12-722","Las","65")
+Set sc=kierownik4.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik1 = ##class(SBD.Pracownik).%New()
+Set pracownik1.Imie = "Marcin"
+Set pracownik1.Nazwisko="Lewandowski"
+do kierownik1.ustalAdres(pracownik1,"Zegocina","32-111","Szewska","18")
+zwrite pracownik1
+Set sc=pracownik1.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik2 = ##class(SBD.Pracownik).%New()
+Set pracownik2.Imie = "Artur"
+Set pracownik2.Nazwisko="Boruc"
+do kierownik2.ustalAdres(pracownik2,"Zegocina","32-111","Trudna","28")
+zwrite pracownik2
+Set sc=pracownik2.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik3 = ##class(SBD.Pracownik).%New()
+Set pracownik3.Imie = "Arkadiusz"
+Set pracownik3.Nazwisko="Glowacki"
+do kierownik3.ustalAdres(pracownik3,"Zegocina","32-111","Lewa","23")
+zwrite pracownik3
+Set sc=pracownik3.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik4 = ##class(SBD.Pracownik).%New()
+Set pracownik4.Imie = "Rafal"
+Set pracownik4.Nazwisko="Dudziak"
+do kierownik4.ustalAdres(pracownik4,"Be³dno","32-144","Widowiskowa","18")
+zwrite pracownik4
+Set sc=pracownik4.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik5 = ##class(SBD.Pracownik).%New()
+Set pracownik5.Imie = "Krystian"
+Set pracownik5.Nazwisko="Grenda"
+do kierownik1.ustalAdres(pracownik5,"Zegocina","33-133","Praska","41")
+zwrite pracownik5
+Set sc=pracownik5.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik6 = ##class(SBD.Pracownik).%New()
+Set pracownik6.Imie = "Alojzy"
+Set pracownik6.Nazwisko="Dominik"
+do kierownik1.ustalAdres(pracownik6,"Lubomierz","23-441","Lesna","28")
+zwrite pracownik6
+Set sc=pracownik6.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik7 = ##class(SBD.Pracownik).%New()
+Set pracownik7.Imie = "Andrzej"
+Set pracownik7.Nazwisko="Surdziel"
+do kierownik1.ustalAdres(pracownik7,"Zegocina","32-111","Grodzka","87")
+zwrite pracownik7
+Set sc=pracownik7.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik8 = ##class(SBD.Pracownik).%New()
+Set pracownik8.Imie = "Marta"
+Set pracownik8.Nazwisko="WoŸniak"
+do kierownik1.ustalAdres(pracownik8,"Zegocina","32-111","Bednarka","18")
+zwrite pracownik8
+Set sc=pracownik8.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik9 = ##class(SBD.Pracownik).%New()
+Set pracownik9.Imie = "Przemyslaw"
+Set pracownik9.Nazwisko="Brdzek"
+do kierownik2.ustalAdres(pracownik9,"Brem","31-136","Gorczewska","12")
+zwrite pracownik9
+Set sc=pracownik9.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik10 = ##class(SBD.Pracownik).%New()
+Set pracownik10.Imie = "Marek"
+Set pracownik10.Nazwisko="Boruc"
+do kierownik1.ustalAdres(pracownik10,"Wieliczka","32-141","Bochenska","56")
+zwrite pracownik10
+Set sc=pracownik10.%Save()
+do $system.OBJ.DisplayError(sc)
+

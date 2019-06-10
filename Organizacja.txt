@@ -1,0 +1,26 @@
+Class SBD.Organizacja Extends (%Persistent, %Populate)
+{
+
+Property Nazwa As %String;
+
+Relationship Placowki As SBD.Placowka [ Cardinality = many, Inverse = Organizacja ];
+
+Storage Default
+{
+<Data name="OrganizacjaDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Nazwa</Value>
+</Value>
+</Data>
+<DataLocation>^SBD.OrganizacjaD</DataLocation>
+<DefaultData>OrganizacjaDefaultData</DefaultData>
+<IdLocation>^SBD.OrganizacjaD</IdLocation>
+<IndexLocation>^SBD.OrganizacjaI</IndexLocation>
+<StreamLocation>^SBD.OrganizacjaS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}

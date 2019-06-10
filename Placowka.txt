@@ -1,0 +1,42 @@
+Class SBD.Placowka Extends (%Persistent, %Populate)
+{
+
+Property Adres As Adres;
+
+Relationship Organizacja As SBD.Organizacja [ Cardinality = one, Inverse = Placowki ];
+
+Relationship Kierownicy As SBD.Kierownik [ Cardinality = many, Inverse = Placowka ];
+
+Relationship Pracownicy As SBD.Pracownik [ Cardinality = many, Inverse = Placowka ];
+
+Method ZamknijPlacowke(id) As %String
+{
+	Set sc = ##class(SBD.Placowka).%DeleteId(id)
+	Return "Placowka zostala zamknieta"
+}
+
+Storage Default
+{
+<Data name="PlacowkaDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Adres</Value>
+</Value>
+<Value name="3">
+<Value>Organizacja</Value>
+</Value>
+<Value name="4">
+<Value>Kierownik</Value>
+</Value>
+</Data>
+<DataLocation>^SBD.PlacowkaD</DataLocation>
+<DefaultData>PlacowkaDefaultData</DefaultData>
+<IdLocation>^SBD.PlacowkaD</IdLocation>
+<IndexLocation>^SBD.PlacowkaI</IndexLocation>
+<StreamLocation>^SBD.PlacowkaS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}

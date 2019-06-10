@@ -1,0 +1,53 @@
+Class SBD.Kierownik Extends (%Persistent, %Populate, SBD.Osoba)
+{
+
+Property Adres As Adres;
+
+Property Imie As %String;
+
+Property Nazwisko As %String;
+
+Relationship Placowka As SBD.Placowka [ Cardinality = one, Inverse = Kierownicy ];
+
+Method PrzedstawSie() As %String
+{
+	Return " Jestem kierownikiem: Imiê: "_..Imie_" Nazwisko: "_..Nazwisko
+}
+
+Method ustalAdres(osoba, miasto, kodPocztowy, ulica, numer) As %String
+{
+ set osoba.Adres.Miasto = miasto
+ set osoba.Adres.KodPocztowy = kodPocztowy
+ set osoba.Adres.Numer = numer
+ set osoba.Adres.Ulica = ulica
+	Return "Zmieniono dane adresowe"
+}
+
+Storage Default
+{
+<Data name="KierownikDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Adres</Value>
+</Value>
+<Value name="3">
+<Value>Imie</Value>
+</Value>
+<Value name="4">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="5">
+<Value>Placowka</Value>
+</Value>
+</Data>
+<DataLocation>^SBD.KierownikD</DataLocation>
+<DefaultData>KierownikDefaultData</DefaultData>
+<IdLocation>^SBD.KierownikD</IdLocation>
+<IndexLocation>^SBD.KierownikI</IndexLocation>
+<StreamLocation>^SBD.KierownikS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}

@@ -1,0 +1,44 @@
+Class SBD.Pracownik Extends (%Persistent, %Populate, SBD.Osoba)
+{
+
+Property Adres As Adres;
+
+Property Imie As %String;
+
+Property Nazwisko As %String;
+
+Relationship Placowka As SBD.Placowka [ Cardinality = one, Inverse = Pracownicy ];
+
+Method PrzedstawSie() As %String
+{
+	Return "Jestem pracownikiem: Imiê: "_..Imie_" Nazwisko: "_..Nazwisko
+}
+
+Storage Default
+{
+<Data name="PracownikDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Adres</Value>
+</Value>
+<Value name="3">
+<Value>Imie</Value>
+</Value>
+<Value name="4">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="5">
+<Value>Placowka</Value>
+</Value>
+</Data>
+<DataLocation>^SBD.PracownikD</DataLocation>
+<DefaultData>PracownikDefaultData</DefaultData>
+<IdLocation>^SBD.PracownikD</IdLocation>
+<IndexLocation>^SBD.PracownikI</IndexLocation>
+<StreamLocation>^SBD.PracownikS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}

@@ -1,0 +1,14 @@
+Class SBD.Osoba Extends (%Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor) [ Abstract ]
+{
+
+Property Adres As Adres;
+
+Property Imie As %String;
+
+Property Nazwisko As %String;
+
+Method PrzedstawSie() As %String
+{
+}
+
+}
